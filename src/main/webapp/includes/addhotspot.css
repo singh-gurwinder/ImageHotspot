@@ -1,0 +1,51 @@
+.imageframe {
+	width: 600px;
+	height: 400px;
+	background-color: grey;
+}
+
+.productimage {
+	position: relative;
+	float: left;
+	width: 600px;
+	height: 400px;
+	backgroung-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.keywordsframe {
+	width: 200px;
+	height: 400px;
+	overflow: auto;
+	background-color: grey;
+}
+
+.hotspot {
+	background-image: url(http://localhost:8080/ImageHotspot/img/hotspot.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	position: absolute;
+	background-size: 100% 100%;
+	background-color: transparent;
+}
+
+.activehotspot {
+	background-image: url(http://localhost:8080/ImageHotspot/img/activehotspot.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	position: relative;
+	background-size: 100% 100%;
+	background-color: transparent;
+}
+
+#productImages li {
+	float: left;
+	list-style: none;
+	cursor: pointer;
+	margin-right: 10px;
+	border: 1px solid grey;
+}

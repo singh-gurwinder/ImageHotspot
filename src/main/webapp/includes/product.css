@@ -1,0 +1,56 @@
+.prodContainer {
+	position: relative;
+}
+.hotspot {
+	position: absolute;
+	display: inline-block;
+	width: 0px;
+	height: 0px;
+	border: 0px;
+	border-right-width: 15px;
+	border-bottom-width: 15px;
+	background-color: lightblue;
+	border-style: solid;
+	border-image: url(http://localhost:8080/ImageHotspot/img/hotspot.png);
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+}
+
+.hotspot:hover {
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	border-image: url(http://localhost:8080/ImageHotspot/img/activehotspot.png);
+}
+
+.closebutton {
+	position: absolute;
+	border: 0px;
+	right: 5px;
+	top: 5px;
+	border-right-width: 15px;
+	border-bottom-width: 15px;
+	border-style: solid;
+	border-image: url(http://localhost:8080/ImageHotspot/img/close.png);
+}
+
+.imageframe {
+	border: 5px;
+	border-color: lightgrey;
+	border-style: solid;
+	margin: 5px;
+}
+
+.resultframe {
+	top: 100px;
+	left: 150px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	border: 5px;
+	border-color: blue;
+	border-style: solid;
+	overflow: auto;
+	background-color: grey;
+}

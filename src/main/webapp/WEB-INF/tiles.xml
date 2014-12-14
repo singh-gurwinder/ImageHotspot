@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="admin/main" template="/jsp/template/mainTemplate.jsp" >
+		<put-attribute name="title" value = "Image Hotspot" />
+		<put-attribute name="heading" value = "Image Hotspot Admin" />
+		<put-attribute name="productMainLayout" value="productMainTile" />
+		<put-attribute name="listProductsLayout" value="/jsp/template/listProductsTemplate.jsp" />
+		<put-attribute name="keywordMainLayout"  value="keywordMainTile" />
+		<put-attribute name="activeTab" value="1" />
+	</definition>
+	
+	<definition name="productMainTile" template="/jsp/template/productsMainTemplate.jsp">
+		<put-attribute name="productContent" value="/jsp/template/productsHome.jsp"/>
+	</definition>
+	
+	<definition name="keywordMainTile" template="/jsp/template/keywordsMainTemplate.jsp">
+		<put-attribute name="keywordContent" value="/jsp/template/keywordsHome.jsp"/>
+	</definition>
+	
+	<definition name="addProductTile" extends="productMainTile">
+		<put-attribute name="productContent" value="/jsp/template/addProducts.jsp" />
+	</definition>
+	
+	<definition name="addKeywordTile" extends="keywordMainTile">
+		<put-attribute name="keywordContent" value="/jsp/template/addKeywords.jsp" />
+	</definition>
+	
+	<definition name="editKeywordTile" extends="keywordMainTile">
+		<put-attribute name="keywordContent" value="/jsp/template/editKeyword.jsp" />
+	</definition>
+	
+	<definition name="modifyProductTile" extends="productMainTile">
+		<put-attribute name="productContent" value="/jsp/template/modifyProducts.jsp" />
+	</definition>
+	
+	<definition name="modifyKeywordTile" extends="keywordMainTile">
+		<put-attribute name="keywordContent" value="/jsp/template/modifyKeyword.jsp" />
+	</definition>
+	
+	<definition name="addHotspotTile" extends="productMainTile">
+		<put-attribute name="productContent" value="/jsp/template/addHotspot.jsp" />
+	</definition>
+	
+	<definition name="admin/product" extends="admin/main">
+		<put-attribute name="activeTab" value="0" />
+	</definition>
+	
+	<definition name="admin/addProduct" extends="admin/product">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Add New Product" />
+		<put-attribute name="productMainLayout"  value="addProductTile" />
+	</definition>
+	
+	<definition name="admin/modifyProduct" extends="admin/product">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Edit Product" />
+		<put-attribute name="productMainLayout"  value="modifyProductTile" />
+	</definition>
+	
+	<definition name="admin/addHotspot" extends="admin/product">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Edit Product Image/Hotspot" />
+		<put-attribute name="productMainLayout"  value="addHotspotTile" />
+	</definition>
+	
+	<definition name="admin/keyword" extends="admin/main">
+		<put-attribute name="activeTab" value="2" />
+	</definition>
+	
+	<definition name="admin/addKeyword" extends="admin/keyword">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Add New Keyword" />
+		<put-attribute name="keywordMainLayout"  value="addKeywordTile" />
+	</definition>
+	
+	<definition name="admin/editKeyword" extends="admin/keyword">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Edit Keywords" />
+		<put-attribute name="keywordMainLayout"  value="editKeywordTile" />
+	</definition>
+	
+	<definition name="admin/modifyKeyword" extends="admin/keyword">
+		<put-attribute name="heading" value = "Image Hotspot Admin: Modify Keyword" />
+		<put-attribute name="keywordMainLayout"  value="modifyKeywordTile" />
+	</definition>
+	
+</tiles-definitions>
