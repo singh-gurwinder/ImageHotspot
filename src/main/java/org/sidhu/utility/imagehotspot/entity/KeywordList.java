@@ -17,7 +17,7 @@ import javax.persistence.Version;
 import org.json.simple.JSONObject;
 
 @Entity
-public class KeywordList implements Serializable {
+public class KeywordList implements Serializable, Comparable<KeywordList> {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -101,5 +101,13 @@ public class KeywordList implements Serializable {
 		prodJSON.put("Description", this.getDescription());
 		prodJSON.put("ID", this.getKeywordId());
 		return prodJSON;
+	}
+
+	@Override
+	public int compareTo(KeywordList keyword) {
+		if(keyword.getDescription() != null){
+			return this.getDescription().compareTo(keyword.getDescription());
+		}
+		return 0;
 	}
 }

@@ -17,6 +17,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Sort;
+import org.hibernate.annotations.SortType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -42,6 +44,7 @@ public class HotSpot implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "HOTSPOT_KEYWORDS_LINK", joinColumns = { @JoinColumn(name = "HOTSPOT_ID") }, inverseJoinColumns = { @JoinColumn(name = "KEYWORD_ID") })
+	@Sort(type = SortType.NATURAL)
 	private Set<KeywordList> keywords = new HashSet<KeywordList>();
 
 	@Version
