@@ -15,10 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL, region="product2Cache")
 public class Product implements Serializable {
 
 	/**

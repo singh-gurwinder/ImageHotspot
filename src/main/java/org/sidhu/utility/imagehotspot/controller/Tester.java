@@ -3,11 +3,13 @@ package org.sidhu.utility.imagehotspot.controller;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.json.simple.JSONObject;
 import org.sidhu.utility.imagehotspot.dao.ProductDao;
 import org.sidhu.utility.imagehotspot.entity.HotSpot;
 import org.sidhu.utility.imagehotspot.entity.Image;
 import org.sidhu.utility.imagehotspot.entity.KeywordList;
 import org.sidhu.utility.imagehotspot.entity.Product;
+import org.sidhu.utility.imagehotspot.util.HibernateStatisticsFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Tester {
 	@Autowired
 	private ProductDao productDao;
+	@Autowired
+	HibernateStatisticsFactoryBean hibernateStatisticsFactoryBean;
 
 	public Tester() {
 		// No argument Constructor
@@ -164,5 +168,25 @@ public class Tester {
 		model.addAttribute("Product", product);
 		return "test1";
 	}
+	
+	/**
+	 * Handles request to return Hibernate Cache Statistics
+	 * @param model Model Object to add attributes to request.
+	 * @return JSP View name as String
+	 * @throws Exception thrown HibernateStatisticsFactoryBean if it is unable to create Hibernate SessionFactory
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/hibernateStatistics", method = RequestMethod.GET)
+	public String getHibernateStatistics(Model model) throws Exception {
+		JSONObject queryCacheStats = hibernateStatisticsFactoryBean.getQueryStatistics("from KeywordList k order by k.keywordGroup, k.description");
+		JSONObject secondLevelCacheStats = hibernateStatisticsFactoryBean.getSecondLevelCacheStatistics("product2Cache");
+		JSONObject hibernateCacheStats = new JSONObject();
+		hibernateCacheStats.put("Query Cache Statistics", queryCacheStats);
+		hibernateCacheStats.put("Second Level Cache Statistics", secondLevelCacheStats);
+		model.addAttribute("Statistics", hibernateCacheStats);
+		return "test1";
+	}
+	
+	
 
 }

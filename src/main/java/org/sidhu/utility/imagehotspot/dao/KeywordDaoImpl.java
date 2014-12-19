@@ -41,7 +41,7 @@ public class KeywordDaoImpl implements KeywordDao {
 
 	@Override
 	public List<KeywordList> getKeywordsList() {
-		return em.createQuery("from KeywordList k order by k.keywordGroup, k.description", KeywordList.class).getResultList();
+		return em.createQuery("from KeywordList k order by k.keywordGroup, k.description", KeywordList.class).setHint("org.hibernate.cacheable", true).getResultList();
 	}
 
 	@Override

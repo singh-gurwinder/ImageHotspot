@@ -12,6 +12,9 @@
 		<c:when test="${!empty Product }">
 			${Product}
 		</c:when>
+		<c:when test="${!empty Statistics }">
+			${Statistics}
+		</c:when>
 		<c:otherwise>
 			Test Data added.
 		</c:otherwise>
